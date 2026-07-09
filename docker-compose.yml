@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  # Service 1: Humara Node.js Web Server
+  web-app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis-db
+
+  # Service 2: Official Redis Database Container
+  redis-db:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
