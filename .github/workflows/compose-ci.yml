@@ -1,0 +1,20 @@
+name: Docker Compose CI
+
+on: [push]
+
+jobs:
+  test-multi-container:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Start Multi-Containers using Compose
+        run: docker compose up -d
+
+      - name: Check if both containers are running
+        run: docker ps
+
+      - name: Stop Containers
+        run: docker compose down
